@@ -135,6 +135,8 @@ add_library(lime_qt STATIC EXCLUDE_FROM_ALL
     game_list_worker.h
     hotkeys.cpp
     hotkeys.h
+    infrared/skylanderportal/skylander_dialog.cpp
+    infrared/skylanderportal/skylander_dialog.h
     lime_qt.cpp
     lime_qt.h
     loading_screen.cpp

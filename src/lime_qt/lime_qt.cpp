@@ -72,6 +72,7 @@
 #include "lime_qt/dumping/dumping_dialog.h"
 #include "lime_qt/game_list.h"
 #include "lime_qt/hotkeys.h"
+#include "lime_qt/infrared/skylanderportal/skylander_dialog.h"
 #include "lime_qt/lime_qt.h"
 #include "lime_qt/loading_screen.h"
 #include "lime_qt/movie/movie_play_dialog.h"
@@ -1068,6 +1069,7 @@ void GMainWindow::ConnectMenuEvents() {
     });
     connect_menu(ui->action_Capture_Screenshot, &GMainWindow::OnCaptureScreenshot);
     connect_menu(ui->action_Dump_Video, &GMainWindow::OnDumpVideo);
+    connect_menu(ui->action_Manage_Skylanders, &GMainWindow::ShowSkylanderPortal);
 
     // Help
     connect_menu(ui->action_Open_Lime3DS_Folder, &GMainWindow::OnOpenLime3DSFolder);
@@ -3092,6 +3094,16 @@ void GMainWindow::OnStopVideoDumping() {
         });
         future_watcher->setFuture(future);
     }
+}
+
+void GMainWindow::ShowSkylanderPortal() {
+    if (!m_skylander_window) {
+        m_skylander_window = SkylanderPortalWindow::get_dlg(this);
+    }
+
+    m_skylander_window->show();
+    m_skylander_window->raise();
+    m_skylander_window->activateWindow();
 }
 
 void GMainWindow::UpdateStatusBar() {
